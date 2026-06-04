@@ -15,9 +15,9 @@
 - [x] T002 Initialize frontend project dependencies and scripts in frontend/package.json
 - [x] T003 [P] Add backend environment template variables in backend/.env.example
 - [x] T004 [P] Add frontend environment template variables in frontend/.env.example
-- [ ] T005 [P] Configure lint/format settings for both apps in backend/.eslintrc.cjs
-- [ ] T006 Create shared frontend API client wrapper in frontend/src/services/apiClient.ts
-- [ ] T007 Create backend app bootstrap and HTTP server entrypoints in backend/src/app.ts
+- [x] T005 [P] Configure lint/format settings for both apps in backend/.eslintrc.cjs
+- [x] T006 Create shared frontend API client wrapper in frontend/src/services/apiClient.ts
+- [x] T007 Create backend app bootstrap and HTTP server entrypoints in backend/src/app.ts
 
 ---
 
