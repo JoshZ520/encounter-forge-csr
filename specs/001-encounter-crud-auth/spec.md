@@ -87,11 +87,11 @@ As an authenticated Dungeon Master, I can add and maintain a list of monsters wi
   Fill them out with the right edge cases.
 -->
 
-- What happens when a user attempts to access encounter URLs while not authenticated?
-- How does the system handle duplicate encounter names for the same user?
+- What happens when a user attempts to access encounter URLs while not authenticated? -> user is rerouted to the login page
+- How does the system handle duplicate encounter names for the same user? -> Encounters have unique ids that are used for them
 - What happens when party level, party size, or monster quantity is outside allowed bounds? The system rejects save and shows field-specific validation errors.
-- How does the system handle encounters with an empty monster list at creation time?
-- What happens when a user tries to access or modify an encounter owned by another user?
+- How does the system handle encounters with an empty monster list at creation time? -> warns the user the encounter will be saved as a draft
+- What happens when a user tries to access or modify an encounter owned by another user? -> Access is blocked by ownership checks; the API returns unauthorized/not-found behavior and the UI shows an access-denied message.
 - How does the system handle session expiration during an active edit? The user is returned to login and must re-authenticate before continuing.
 
 ## Requirements _(mandatory)_
