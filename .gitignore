@@ -12,3 +12,13 @@ frontend/.env
 node_modules/
 backend/node_modules/
 frontend/node_modules/
+dist/
+build/
+coverage/
+*.log
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+.vscode/
+.idea/

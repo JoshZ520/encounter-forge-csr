@@ -27,13 +27,13 @@
 
 **CRITICAL**: No user story implementation starts before this phase is done.
 
-- [ ] T008 Configure MongoDB connection and startup wiring in backend/src/lib/mongoose.ts
-- [ ] T009 [P] Implement auth/session middleware with inactivity checks in backend/src/middleware/auth.ts
-- [ ] T010 [P] Implement centralized API error handling middleware in backend/src/middleware/errorHandler.ts
-- [ ] T011 Create reusable request validation helpers in backend/src/lib/validation.ts
-- [ ] T012 Create shared enum/value constants from contract in backend/src/models/enums.ts
-- [ ] T013 Register API route modules and middleware pipeline in backend/src/api/index.ts
-- [ ] T014 Add OpenAPI contract harness baseline in backend/tests/contract/openapi.contract.test.ts
+- [x] T008 Configure MongoDB connection and startup wiring in backend/src/lib/mongoose.ts
+- [x] T009 [P] Implement auth/session middleware with inactivity checks in backend/src/middleware/auth.ts
+- [x] T010 [P] Implement centralized API error handling middleware in backend/src/middleware/errorHandler.ts
+- [x] T011 Create reusable request validation helpers in backend/src/lib/validation.ts
+- [x] T012 Create shared enum/value constants from contract in backend/src/models/enums.ts
+- [x] T013 Register API route modules and middleware pipeline in backend/src/api/index.ts
+- [x] T014 Add OpenAPI contract harness baseline in backend/tests/contract/openapi.contract.test.ts
 
 **Checkpoint**: Foundation complete; user stories can proceed.
 
@@ -47,13 +47,13 @@
 
 ### Tests for User Story 1
 
-- [ ] T015 [P] [US1] Add auth contract tests for register/login/logout in backend/tests/contract/auth.contract.test.ts
-- [ ] T016 [P] [US1] Add auth integration tests including session expiry behavior in backend/tests/integration/auth.session.integration.test.ts
+- [x] T015 [P] [US1] Add auth contract tests for register/login/logout in backend/tests/contract/auth.contract.test.ts
+- [x] T016 [P] [US1] Add auth integration tests including session expiry behavior in backend/tests/integration/auth.session.integration.test.ts
 
 ### Implementation for User Story 1
 
-- [ ] T017 [P] [US1] Create user schema/model with normalized email and timestamps in backend/src/models/user.model.ts
-- [ ] T018 [US1] Implement auth service for registration, login, logout, and token/session handling in backend/src/services/auth.service.ts
+- [x] T017 [P] [US1] Create user schema/model with normalized email and timestamps in backend/src/models/user.model.ts
+- [x] T018 [US1] Implement auth service for registration, login, logout, and token/session handling in backend/src/services/auth.service.ts
 - [ ] T019 [US1] Implement auth route handlers and input validation in backend/src/api/auth/auth.routes.ts
 - [ ] T020 [US1] Implement login/register pages and protected-route gate in frontend/src/pages/LoginPage.tsx
 - [ ] T021 [US1] Implement frontend auth state/session lifecycle handling in frontend/src/features/auth/authStore.ts
