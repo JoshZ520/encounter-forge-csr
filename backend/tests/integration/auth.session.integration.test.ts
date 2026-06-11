@@ -1,7 +1,7 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 import request from "supertest";
-import { requireAuth } from "../../src/middleware/auth";
+import { requireAuth } from "../../src/middleware/auth.js";
 
 describe("Auth session middleware", () => {
   const app = express();

@@ -54,10 +54,10 @@
 
 - [x] T017 [P] [US1] Create user schema/model with normalized email and timestamps in backend/src/models/user.model.ts
 - [x] T018 [US1] Implement auth service for registration, login, logout, and token/session handling in backend/src/services/auth.service.ts
-- [ ] T019 [US1] Implement auth route handlers and input validation in backend/src/api/auth/auth.routes.ts
-- [ ] T020 [US1] Implement login/register pages and protected-route gate in frontend/src/pages/LoginPage.tsx
-- [ ] T021 [US1] Implement frontend auth state/session lifecycle handling in frontend/src/features/auth/authStore.ts
-- [ ] T022 [US1] Implement auth form error/success messaging in frontend/src/features/auth/AuthForm.tsx
+- [x] T019 [US1] Implement auth route handlers and input validation in backend/src/api/auth/auth.routes.ts
+- [x] T020 [US1] Implement login/register pages and protected-route gate in frontend/src/pages/LoginPage.tsx
+- [x] T021 [US1] Implement frontend auth state/session lifecycle handling in frontend/src/features/auth/authStore.ts
+- [x] T022 [US1] Implement auth form error/success messaging in frontend/src/features/auth/AuthForm.tsx
 
 **Checkpoint**: User Story 1 is independently functional and testable.
 

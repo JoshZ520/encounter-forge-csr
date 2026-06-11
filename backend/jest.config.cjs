@@ -6,6 +6,10 @@ module.exports = {
   moduleNameMapper: {
     "^(\\.{1,2}/.*)\\.js$": "$1",
   },
+  transformIgnorePatterns: ["node_modules"],
+  testEnvironmentOptions: {
+    useESM: true,
+  },
   transform: {
     "^.+\\.ts$": [
       "ts-jest",
