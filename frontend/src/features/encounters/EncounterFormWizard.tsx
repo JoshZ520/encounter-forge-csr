@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { EncounterStatusControls } from "./EncounterStatusControls";
+import { EncounterMonsterEditor } from "./EncounterMonsterEditor";
 import {
   challengeRatingValues,
   createEmptyEncounterFormValues,
@@ -69,31 +70,6 @@ export function EncounterFormWizard({
 
   function updateValue<K extends keyof EncounterFormValues>(key: K, nextValue: EncounterFormValues[K]) {
     setValues((current) => ({ ...current, [key]: nextValue }));
-  }
-
-  function updateMonster(index: number, key: keyof EncounterFormValues["monsters"][number], nextValue: unknown) {
-    setValues((current) => {
-      const monsters = [...current.monsters];
-      monsters[index] = { ...monsters[index], [key]: nextValue } as EncounterFormValues["monsters"][number];
-      return { ...current, monsters };
-    });
-  }
-
-  function addMonster() {
-    setValues((current) => ({
-      ...current,
-      monsters: [
-        ...current.monsters,
-        { isManual: true, name: "", quantity: 1, cr: "1", notes: "" },
-      ],
-    }));
-  }
-
-  function removeMonster(index: number) {
-    setValues((current) => ({
-      ...current,
-      monsters: current.monsters.filter((_, monsterIndex) => monsterIndex !== index),
-    }));
   }
 
   function validateCurrentStep() {
@@ -258,98 +234,11 @@ export function EncounterFormWizard({
 
       {step === 2 ? (
         <section style={{ display: "grid", gap: 16 }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12 }}>
-            <h2 style={{ margin: 0 }}>Monsters</h2>
-            <button
-              type="button"
-              onClick={addMonster}
-              style={{ padding: "10px 14px", borderRadius: 10, border: "1px solid #0f766e", background: "#ecfeff" }}
-            >
-              Add monster
-            </button>
-          </div>
-
-          {values.monsters.map((monster, index) => (
-            <div
-              key={`${monster.name}-${index}`}
-              style={{
-                display: "grid",
-                gap: 12,
-                padding: 16,
-                borderRadius: 12,
-                border: "1px solid #cbd5e1",
-                background: "#f8fafc",
-              }}
-            >
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 12 }}>
-                <label style={{ display: "grid", gap: 6 }}>
-                  <span>Name</span>
-                  <input
-                    value={monster.name}
-                    onChange={(event) => updateMonster(index, "name", event.target.value)}
-                    style={{ padding: 10, borderRadius: 8, border: "1px solid #cbd5e1" }}
-                  />
-                </label>
-
-                <label style={{ display: "grid", gap: 6 }}>
-                  <span>Quantity</span>
-                  <input
-                    type="number"
-                    min={1}
-                    max={99}
-                    value={monster.quantity}
-                    onChange={(event) => updateMonster(index, "quantity", Number(event.target.value))}
-                    style={{ padding: 10, borderRadius: 8, border: "1px solid #cbd5e1" }}
-                  />
-                </label>
-
-                <label style={{ display: "grid", gap: 6 }}>
-                  <span>CR</span>
-                  <select
-                    value={monster.cr}
-                    onChange={(event) => updateMonster(index, "cr", event.target.value as EncounterFormValues["monsters"][number]["cr"])}
-                    style={{ padding: 10, borderRadius: 8, border: "1px solid #cbd5e1" }}
-                  >
-                    {challengeRatingValues.map((challengeRating) => (
-                      <option key={challengeRating} value={challengeRating}>
-                        {challengeRating}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-              </div>
-
-              <label style={{ display: "grid", gap: 6 }}>
-                <span>Monster notes</span>
-                <textarea
-                  value={monster.notes ?? ""}
-                  onChange={(event) => updateMonster(index, "notes", event.target.value)}
-                  rows={3}
-                  style={{ padding: 10, borderRadius: 8, border: "1px solid #cbd5e1" }}
-                />
-              </label>
-
-              <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
-                <label style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <input
-                    type="checkbox"
-                    checked={monster.isManual}
-                    onChange={(event) => updateMonster(index, "isManual", event.target.checked)}
-                  />
-                  Manual entry
-                </label>
-
-                <button
-                  type="button"
-                  onClick={() => removeMonster(index)}
-                  style={{ padding: "8px 12px", borderRadius: 10, border: "1px solid #ef4444", background: "#fff1f2" }}
-                >
-                  Remove
-                </button>
-              </div>
-            </div>
-          ))}
-
+          <EncounterMonsterEditor
+            environment={values.environment}
+            monsters={values.monsters}
+            onChange={(monsters) => updateValue("monsters", monsters)}
+          />
           {fieldErrors.monsters ? <small style={{ color: "#b91c1c" }}>{fieldErrors.monsters}</small> : null}
         </section>
       ) : null}

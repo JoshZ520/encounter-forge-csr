@@ -97,18 +97,18 @@
 
 ### Tests for User Story 3
 
-- [ ] T033 [P] [US3] Add monster lookup contract tests for filtering, fallback, and pagination in backend/tests/contract/monsters.contract.test.ts
-- [ ] T034 [P] [US3] Add integration tests for manual entries, duplicate merge, and immutable snapshots in backend/tests/integration/monsters.snapshot.integration.test.ts
+- [x] T033 [P] [US3] Add monster lookup contract tests for filtering, fallback, and pagination in backend/tests/contract/monsters.contract.test.ts
+- [x] T034 [P] [US3] Add integration tests for manual entries, duplicate merge, and immutable snapshots in backend/tests/integration/monsters.snapshot.integration.test.ts
 
 ### Implementation for User Story 3
 
-- [ ] T035 [P] [US3] Create monster catalog schema/model for global lookup in backend/src/models/monsterCatalog.model.ts
-- [ ] T036 [US3] Implement monster catalog search service with area filter and show-all fallback in backend/src/services/monsterCatalog.service.ts
-- [ ] T037 [US3] Implement monster lookup API endpoint with typeahead and pagination in backend/src/api/monsters/monsters.routes.ts
-- [ ] T038 [US3] Implement monster picker UI with area filter, show-all toggle, search, and paging in frontend/src/features/encounters/MonsterPicker.tsx
-- [ ] T039 [US3] Implement encounter monster editor with add/edit/remove and quantity increment behavior in frontend/src/features/encounters/EncounterMonsterEditor.tsx
-- [ ] T040 [US3] Implement collapsible monster snapshot card UI in frontend/src/features/encounters/MonsterSnapshotCard.tsx
-- [ ] T041 [US3] Implement encounter snapshot mapping for catalog and manual monsters in frontend/src/features/encounters/snapshotMapper.ts
+- [x] T035 [P] [US3] Create monster catalog schema/model for global lookup in backend/src/models/monsterCatalog.model.ts
+- [x] T036 [US3] Implement monster catalog search service with area filter and show-all fallback in backend/src/services/monsterCatalog.service.ts
+- [x] T037 [US3] Implement monster lookup API endpoint with typeahead and pagination in backend/src/api/monsters/monsters.routes.ts
+- [x] T038 [US3] Implement monster picker UI with area filter, show-all toggle, search, and paging in frontend/src/features/encounters/MonsterPicker.tsx
+- [x] T039 [US3] Implement encounter monster editor with add/edit/remove and quantity increment behavior in frontend/src/features/encounters/EncounterMonsterEditor.tsx
+- [x] T040 [US3] Implement collapsible monster snapshot card UI in frontend/src/features/encounters/MonsterSnapshotCard.tsx
+- [x] T041 [US3] Implement encounter snapshot mapping for catalog and manual monsters in frontend/src/features/encounters/snapshotMapper.ts
 
 **Checkpoint**: All three user stories are independently functional.
 

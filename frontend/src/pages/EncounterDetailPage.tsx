@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { deleteEncounter, fetchEncounter, type EncounterDetail } from "../features/encounters/encounterApi";
+import { MonsterSnapshotCard } from "../features/encounters/MonsterSnapshotCard";
 
 interface FlashState {
   flashMessage?: string;
@@ -103,11 +104,7 @@ export function EncounterDetailPage() {
         <h2 style={{ margin: 0 }}>Monster snapshots</h2>
         {encounter.monsters.length === 0 ? <p>No monsters added yet.</p> : null}
         {encounter.monsters.map((monster, index) => (
-          <article key={`${monster.name}-${index}`} style={{ padding: 16, borderRadius: 12, border: "1px solid #cbd5e1", background: "#f8fafc" }}>
-            <strong>{monster.quantity} x {monster.name}</strong>
-            <p style={{ margin: "8px 0 0" }}>CR {monster.cr} · {monster.isManual ? "Manual" : "Catalog"}</p>
-            {monster.notes ? <p style={{ margin: "8px 0 0" }}>{monster.notes}</p> : null}
-          </article>
+          <MonsterSnapshotCard key={`${monster.name}-${index}`} monster={monster} index={index} />
         ))}
       </section>
     </main>
