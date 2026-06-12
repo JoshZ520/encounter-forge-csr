@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { environmentValues } from "./encounterValidation";
 import { fetchMonsterCatalog, type MonsterCatalogItem } from "./monsterCatalogApi";
+import "./EncounterComponents.css";
 
 interface MonsterPickerProps {
   defaultEnvironment: (typeof environmentValues)[number];
@@ -67,22 +68,22 @@ export function MonsterPicker({ defaultEnvironment, onSelect }: MonsterPickerPro
   }, [environment, includeAll, query]);
 
   return (
-    <section style={{ display: "grid", gap: 12, padding: 16, borderRadius: 14, border: "1px solid #cbd5e1", background: "#fff7ed" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
+    <section className="monster-picker">
+      <div className="monster-picker-header">
         <div>
           <strong>Monster picker</strong>
-          <p style={{ margin: "4px 0 0", color: "#7c2d12", fontSize: 13 }}>Search the shared catalog and click a result to add or increment it.</p>
+          <p className="monster-picker-subtitle">Search the shared catalog and click a result to add or increment it.</p>
         </div>
-        <label style={{ display: "flex", alignItems: "center", gap: 8 }}>
+        <label className="monster-picker-toggle-label">
           <input type="checkbox" checked={includeAll} onChange={(event) => setIncludeAll(event.target.checked)} />
           Show all
         </label>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 12 }}>
-        <label style={{ display: "grid", gap: 6 }}>
+      <div className="monster-picker-filters">
+        <label className="monster-picker-field">
           <span>Area</span>
-          <select value={environment} onChange={(event) => setEnvironment(event.target.value as typeof environment)} style={{ padding: 10, borderRadius: 8, border: "1px solid #fdba74" }}>
+          <select value={environment} onChange={(event) => setEnvironment(event.target.value as typeof environment)} className="monster-picker-input">
             {environmentValues.map((option) => (
               <option key={option} value={option}>
                 {option}
@@ -91,55 +92,46 @@ export function MonsterPicker({ defaultEnvironment, onSelect }: MonsterPickerPro
           </select>
         </label>
 
-        <label style={{ display: "grid", gap: 6, gridColumn: "span 2" }}>
+        <label className="monster-picker-field monster-picker-search-field">
           <span>Search</span>
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search by monster name"
-            style={{ padding: 10, borderRadius: 8, border: "1px solid #fdba74" }}
+            className="monster-picker-input"
           />
         </label>
       </div>
 
-      {error ? <div style={{ padding: 12, borderRadius: 10, background: "#fef2f2", color: "#b91c1c" }}>{error}</div> : null}
+      {error ? <div className="monster-picker-error">{error}</div> : null}
 
-      <div style={{ display: "grid", gap: 10 }}>
-        {isLoading ? <p style={{ margin: 0 }}>Loading monsters...</p> : null}
-        {!isLoading && items.length === 0 ? <p style={{ margin: 0 }}>No monsters matched the current search.</p> : null}
+      <div className="monster-picker-list">
+        {isLoading ? <p className="monster-picker-message">Loading monsters...</p> : null}
+        {!isLoading && items.length === 0 ? <p className="monster-picker-message">No monsters matched the current search.</p> : null}
 
         {items.map((monster) => (
           <button
             key={monster.id}
             type="button"
             onClick={() => onSelect(monster)}
-            style={{
-              textAlign: "left",
-              display: "grid",
-              gap: 4,
-              padding: 12,
-              borderRadius: 12,
-              border: "1px solid #fdba74",
-              background: "white",
-              cursor: "pointer",
-            }}
+            className="monster-picker-item"
           >
             <strong>{monster.name}</strong>
-            <span style={{ color: "#7c2d12", fontSize: 13 }}>CR {monster.cr} · {monster.environments.join(", ") || "Unspecified"}</span>
+            <span className="monster-picker-item-meta">CR {monster.cr} · {monster.environments.join(", ") || "Unspecified"}</span>
           </button>
         ))}
       </div>
 
-      <footer style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
-        <span style={{ color: "#7c2d12", fontSize: 13 }}>
+      <footer className="monster-picker-footer">
+        <span className="monster-picker-footer-meta">
           Page {page} of {totalPages} · {total} total
         </span>
-        <div style={{ display: "flex", gap: 8 }}>
+        <div className="monster-picker-footer-actions">
           <button
             type="button"
             onClick={() => setPage((current) => Math.max(1, current - 1))}
             disabled={page <= 1}
-            style={{ padding: "8px 12px", borderRadius: 10, border: "1px solid #fdba74", background: "white" }}
+            className="monster-picker-page-button"
           >
             Previous
           </button>
@@ -147,7 +139,7 @@ export function MonsterPicker({ defaultEnvironment, onSelect }: MonsterPickerPro
             type="button"
             onClick={() => setPage((current) => Math.min(totalPages, current + 1))}
             disabled={page >= totalPages}
-            style={{ padding: "8px 12px", borderRadius: 10, border: "1px solid #fdba74", background: "white" }}
+            className="monster-picker-page-button"
           >
             Next
           </button>

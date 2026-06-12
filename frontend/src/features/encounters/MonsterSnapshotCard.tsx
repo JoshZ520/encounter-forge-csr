@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { challengeRatingValues } from "./encounterValidation";
 import type { EncounterMonsterSnapshot } from "./snapshotMapper";
+import "./EncounterComponents.css";
 
 interface MonsterSnapshotCardProps {
   monster: EncounterMonsterSnapshot;
@@ -16,7 +17,7 @@ function StatBadge({ label, value }: { label: string; value?: number }) {
   }
 
   return (
-    <span style={{ padding: "4px 8px", borderRadius: 999, background: "#e2e8f0", fontSize: 12 }}>
+    <span className="monster-snapshot-card-badge">
       {label} {value}
     </span>
   );
@@ -36,53 +37,41 @@ export function MonsterSnapshotCard({ monster, index, editable, onChange, onRemo
   }
 
   return (
-    <article style={{ display: "grid", gap: 12, padding: 16, borderRadius: 14, border: "1px solid #cbd5e1", background: "#f8fafc" }}>
+    <article className="monster-snapshot-card">
       <button
         type="button"
         onClick={() => setIsExpanded((current) => !current)}
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: 12,
-          width: "100%",
-          border: 0,
-          background: "transparent",
-          padding: 0,
-          color: "inherit",
-          textAlign: "left",
-          cursor: "pointer",
-        }}
+        className="monster-snapshot-card-toggle"
       >
-        <div style={{ display: "grid", gap: 4 }}>
+        <div className="monster-snapshot-card-header-copy">
           <strong>{headerLabel}</strong>
-          <span style={{ color: "#475569", fontSize: 13 }}>
+          <span className="monster-snapshot-card-subtitle">
             {monster.isManual ? "Manual snapshot" : `Catalog snapshot${monster.sourceMonsterId ? ` · ${monster.sourceMonsterId}` : ""}`}
           </span>
         </div>
-        <span style={{ color: "#475569", fontSize: 12 }}>{isExpanded ? "Collapse" : "Expand"}</span>
+        <span className="monster-snapshot-card-expand-label">{isExpanded ? "Collapse" : "Expand"}</span>
       </button>
 
       {isExpanded ? (
-        <div style={{ display: "grid", gap: 12 }}>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+        <div className="monster-snapshot-card-content">
+          <div className="monster-snapshot-card-badges">
             <StatBadge label="CR" value={Number.parseFloat(monster.cr)} />
             <StatBadge label="AC" value={monster.ac} />
             <StatBadge label="HP" value={monster.hp} />
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 12 }}>
-            <label style={{ display: "grid", gap: 6 }}>
+          <div className="monster-snapshot-card-grid">
+            <label className="monster-snapshot-card-field">
               <span>Name</span>
               <input
                 value={monster.name}
                 onChange={(event) => updateMonster({ name: event.target.value })}
                 disabled={!editable}
-                style={{ padding: 10, borderRadius: 8, border: "1px solid #cbd5e1" }}
+                className="monster-snapshot-card-input"
               />
             </label>
 
-            <label style={{ display: "grid", gap: 6 }}>
+            <label className="monster-snapshot-card-field">
               <span>Quantity</span>
               <input
                 type="number"
@@ -91,17 +80,17 @@ export function MonsterSnapshotCard({ monster, index, editable, onChange, onRemo
                 value={monster.quantity}
                 onChange={(event) => updateMonster({ quantity: Number(event.target.value) })}
                 disabled={!editable}
-                style={{ padding: 10, borderRadius: 8, border: "1px solid #cbd5e1" }}
+                className="monster-snapshot-card-input"
               />
             </label>
 
-            <label style={{ display: "grid", gap: 6 }}>
+            <label className="monster-snapshot-card-field">
               <span>CR</span>
               <select
                 value={crValue}
                 onChange={(event) => updateMonster({ cr: event.target.value as any })}
                 disabled={!editable}
-                style={{ padding: 10, borderRadius: 8, border: "1px solid #cbd5e1" }}
+                className="monster-snapshot-card-input"
               >
                 {challengeRatingValues.map((challengeRating) => (
                   <option key={challengeRating} value={challengeRating}>
@@ -112,63 +101,63 @@ export function MonsterSnapshotCard({ monster, index, editable, onChange, onRemo
             </label>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 12 }}>
-            <label style={{ display: "grid", gap: 6 }}>
+          <div className="monster-snapshot-card-grid">
+            <label className="monster-snapshot-card-field">
               <span>AC</span>
               <input
                 type="number"
                 value={monster.ac ?? ""}
                 onChange={(event) => updateMonster({ ac: event.target.value ? Number(event.target.value) : undefined })}
                 disabled={!editable}
-                style={{ padding: 10, borderRadius: 8, border: "1px solid #cbd5e1" }}
+                className="monster-snapshot-card-input"
               />
             </label>
 
-            <label style={{ display: "grid", gap: 6 }}>
+            <label className="monster-snapshot-card-field">
               <span>HP</span>
               <input
                 type="number"
                 value={monster.hp ?? ""}
                 onChange={(event) => updateMonster({ hp: event.target.value ? Number(event.target.value) : undefined })}
                 disabled={!editable}
-                style={{ padding: 10, borderRadius: 8, border: "1px solid #cbd5e1" }}
+                className="monster-snapshot-card-input"
               />
             </label>
 
-            <label style={{ display: "grid", gap: 6 }}>
+            <label className="monster-snapshot-card-field">
               <span>Speed</span>
               <input
                 value={monster.speed ?? ""}
                 onChange={(event) => updateMonster({ speed: event.target.value || undefined })}
                 disabled={!editable}
-                style={{ padding: 10, borderRadius: 8, border: "1px solid #cbd5e1" }}
+                className="monster-snapshot-card-input"
               />
             </label>
           </div>
 
-          <label style={{ display: "grid", gap: 6 }}>
+          <label className="monster-snapshot-card-field">
             <span>Notes</span>
             <textarea
               value={monster.notes ?? ""}
               onChange={(event) => updateMonster({ notes: event.target.value })}
               disabled={!editable}
               rows={3}
-              style={{ padding: 10, borderRadius: 8, border: "1px solid #cbd5e1" }}
+              className="monster-snapshot-card-input"
             />
           </label>
 
-          <label style={{ display: "grid", gap: 6 }}>
+          <label className="monster-snapshot-card-field">
             <span>Description</span>
             <textarea
               value={monster.description ?? ""}
               onChange={(event) => updateMonster({ description: event.target.value || undefined })}
               disabled={!editable}
               rows={3}
-              style={{ padding: 10, borderRadius: 8, border: "1px solid #cbd5e1" }}
+              className="monster-snapshot-card-input"
             />
           </label>
 
-          <label style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <label className="monster-snapshot-card-checkbox-label">
             <input
               type="checkbox"
               checked={monster.isManual}
@@ -179,9 +168,9 @@ export function MonsterSnapshotCard({ monster, index, editable, onChange, onRemo
           </label>
 
           {monster.coreStats ? (
-            <div style={{ display: "grid", gap: 8 }}>
+            <div className="monster-snapshot-card-ability-scores">
               <strong>Ability scores</strong>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+              <div className="monster-snapshot-card-badges">
                 <StatBadge label="STR" value={monster.coreStats.str} />
                 <StatBadge label="DEX" value={monster.coreStats.dex} />
                 <StatBadge label="CON" value={monster.coreStats.con} />
@@ -193,12 +182,12 @@ export function MonsterSnapshotCard({ monster, index, editable, onChange, onRemo
           ) : null}
 
           {editable ? (
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-              <span style={{ color: "#475569", fontSize: 13 }}>Snapshot {typeof index === "number" ? index + 1 : ""}</span>
+            <div className="monster-snapshot-card-footer">
+              <span className="monster-snapshot-card-subtitle">Snapshot {typeof index === "number" ? index + 1 : ""}</span>
               <button
                 type="button"
                 onClick={onRemove}
-                style={{ padding: "8px 12px", borderRadius: 10, border: "1px solid #ef4444", background: "#fff1f2", color: "#b91c1c" }}
+                className="monster-snapshot-card-remove-button"
               >
                 Remove
               </button>

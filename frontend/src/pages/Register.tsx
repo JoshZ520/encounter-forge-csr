@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuthStore } from "../stores/authStore";
+import "./AuthPages.css";
 
 export function Register() {
   const [email, setEmail] = useState("");
@@ -46,32 +47,24 @@ export function Register() {
   const displayError = localError || storeError;
 
   return (
-    <div
-      style={{
-        maxWidth: "400px",
-        margin: "50px auto",
-        padding: "20px",
-        border: "1px solid #ccc",
-        borderRadius: "8px",
-      }}
-    >
-      <h1>Register</h1>
+    <div className="auth-page">
+      <h1 className="auth-page-title">Register</h1>
 
       {displayError && (
-        <div style={{ color: "red", marginBottom: "10px", padding: "10px", backgroundColor: "#ffe6e6", borderRadius: "4px" }}>
+        <div className="auth-alert auth-alert-error">
           {displayError}
         </div>
       )}
 
       {success && (
-        <div style={{ color: "green", marginBottom: "10px", padding: "10px", backgroundColor: "#e6ffe6", borderRadius: "4px" }}>
+        <div className="auth-alert auth-alert-success">
           Registration successful! Redirecting...
         </div>
       )}
 
       <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: "15px" }}>
-          <label htmlFor="email" style={{ display: "block", marginBottom: "5px" }}>
+        <div className="auth-field-group">
+          <label htmlFor="email" className="auth-label">
             Email:
           </label>
           <input
@@ -79,13 +72,13 @@ export function Register() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+            className="auth-input"
             disabled={isLoading}
           />
         </div>
 
-        <div style={{ marginBottom: "15px" }}>
-          <label htmlFor="password" style={{ display: "block", marginBottom: "5px" }}>
+        <div className="auth-field-group">
+          <label htmlFor="password" className="auth-label">
             Password (min 8 characters):
           </label>
           <input
@@ -93,13 +86,13 @@ export function Register() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+            className="auth-input"
             disabled={isLoading}
           />
         </div>
 
-        <div style={{ marginBottom: "15px" }}>
-          <label htmlFor="confirmPassword" style={{ display: "block", marginBottom: "5px" }}>
+        <div className="auth-field-group">
+          <label htmlFor="confirmPassword" className="auth-label">
             Confirm Password:
           </label>
           <input
@@ -107,7 +100,7 @@ export function Register() {
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+            className="auth-input"
             disabled={isLoading}
           />
         </div>
@@ -115,23 +108,15 @@ export function Register() {
         <button
           type="submit"
           disabled={isLoading}
-          style={{
-            width: "100%",
-            padding: "10px",
-            backgroundColor: isLoading ? "#ccc" : "#28a745",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            cursor: isLoading ? "not-allowed" : "pointer",
-          }}
+          className="auth-submit auth-submit-register"
         >
           {isLoading ? "Registering..." : "Register"}
         </button>
       </form>
 
-      <p style={{ marginTop: "15px", textAlign: "center" }}>
+      <p className="auth-footnote">
         Already have an account?{" "}
-        <Link to="/login" style={{ color: "#007bff", textDecoration: "none" }}>
+        <Link to="/login" className="auth-link">
           Login
         </Link>
       </p>

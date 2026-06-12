@@ -10,6 +10,7 @@ import {
   mapZodErrors,
   type EncounterFormValues,
 } from "./encounterValidation";
+import "./EncounterComponents.css";
 
 interface EncounterFormWizardProps {
   initialValues?: EncounterFormValues;
@@ -117,42 +118,42 @@ export function EncounterFormWizard({
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: "grid", gap: 20 }}>
-      <header style={{ display: "grid", gap: 8 }}>
-        <h1 style={{ margin: 0 }}>Encounter Forge</h1>
-        <p style={{ margin: 0, color: "#475569" }}>
+    <form onSubmit={handleSubmit} className="encounter-form-wizard">
+      <header className="encounter-form-wizard-header">
+        <h1 className="encounter-form-wizard-title">Encounter Forge</h1>
+        <p className="encounter-form-wizard-subtitle">
           Step {step + 1} of 4: {stepLabels[step]}.
         </p>
-        <p style={{ margin: 0, color: "#64748b", fontSize: 14 }}>
+        <p className="encounter-form-wizard-description">
           Move through the sections in order. Draft encounters can stay empty until you are ready.
         </p>
       </header>
 
       {formError ? (
-        <div style={{ padding: 12, borderRadius: 10, background: "#fef2f2", color: "#b91c1c" }}>
+        <div className="encounter-form-wizard-error-banner">
           {formError}
         </div>
       ) : null}
 
       {step === 0 ? (
-        <section style={{ display: "grid", gap: 16 }}>
-          <label style={{ display: "grid", gap: 6 }}>
+        <section className="encounter-form-wizard-section">
+          <label className="encounter-form-wizard-field">
             <span>Encounter name</span>
             <input
               value={values.title}
               onChange={(event) => updateValue("title", event.target.value)}
-              style={{ padding: 10, borderRadius: 8, border: "1px solid #cbd5e1" }}
+              className="encounter-form-wizard-input"
             />
-            {fieldErrors.title ? <small style={{ color: "#b91c1c" }}>{fieldErrors.title}</small> : null}
+            {fieldErrors.title ? <small className="encounter-form-wizard-field-error">{fieldErrors.title}</small> : null}
           </label>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 16 }}>
-            <label style={{ display: "grid", gap: 6 }}>
+          <div className="encounter-form-wizard-grid">
+            <label className="encounter-form-wizard-field">
               <span>Environment</span>
               <select
                 value={values.environment}
                 onChange={(event) => updateValue("environment", event.target.value as EncounterFormValues["environment"])}
-                style={{ padding: 10, borderRadius: 8, border: "1px solid #cbd5e1" }}
+                className="encounter-form-wizard-input"
               >
                 {environmentValues.map((environment) => (
                   <option key={environment} value={environment}>
@@ -162,12 +163,12 @@ export function EncounterFormWizard({
               </select>
             </label>
 
-            <label style={{ display: "grid", gap: 6 }}>
+            <label className="encounter-form-wizard-field">
               <span>Difficulty</span>
               <select
                 value={values.difficulty}
                 onChange={(event) => updateValue("difficulty", event.target.value as EncounterFormValues["difficulty"])}
-                style={{ padding: 10, borderRadius: 8, border: "1px solid #cbd5e1" }}
+                className="encounter-form-wizard-input"
               >
                 {difficultyValues.map((difficulty) => (
                   <option key={difficulty} value={difficulty}>
@@ -178,22 +179,22 @@ export function EncounterFormWizard({
             </label>
           </div>
 
-          <label style={{ display: "grid", gap: 6 }}>
+          <label className="encounter-form-wizard-field">
             <span>Notes</span>
             <textarea
               value={values.notes ?? ""}
               onChange={(event) => updateValue("notes", event.target.value)}
               rows={4}
-              style={{ padding: 10, borderRadius: 8, border: "1px solid #cbd5e1" }}
+              className="encounter-form-wizard-input"
             />
           </label>
         </section>
       ) : null}
 
       {step === 1 ? (
-        <section style={{ display: "grid", gap: 16 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 16 }}>
-            <label style={{ display: "grid", gap: 6 }}>
+        <section className="encounter-form-wizard-section">
+          <div className="encounter-form-wizard-grid">
+            <label className="encounter-form-wizard-field">
               <span>Party size</span>
               <input
                 type="number"
@@ -201,11 +202,11 @@ export function EncounterFormWizard({
                 max={10}
                 value={values.partySize}
                 onChange={(event) => updateValue("partySize", Number(event.target.value))}
-                style={{ padding: 10, borderRadius: 8, border: "1px solid #cbd5e1" }}
+                className="encounter-form-wizard-input"
               />
             </label>
 
-            <label style={{ display: "grid", gap: 6 }}>
+            <label className="encounter-form-wizard-field">
               <span>Party level</span>
               <input
                 type="number"
@@ -213,16 +214,16 @@ export function EncounterFormWizard({
                 max={20}
                 value={values.partyLevel}
                 onChange={(event) => updateValue("partyLevel", Number(event.target.value))}
-                style={{ padding: 10, borderRadius: 8, border: "1px solid #cbd5e1" }}
+                className="encounter-form-wizard-input"
               />
             </label>
 
-            <label style={{ display: "grid", gap: 6 }}>
+            <label className="encounter-form-wizard-field">
               <span>Target CR</span>
               <select
                 value={values.targetCR}
                 onChange={(event) => updateValue("targetCR", event.target.value as EncounterFormValues["targetCR"])}
-                style={{ padding: 10, borderRadius: 8, border: "1px solid #cbd5e1" }}
+                className="encounter-form-wizard-input"
               >
                 {challengeRatingValues.map((challengeRating) => (
                   <option key={challengeRating} value={challengeRating}>
@@ -236,30 +237,30 @@ export function EncounterFormWizard({
       ) : null}
 
       {step === 2 ? (
-        <section style={{ display: "grid", gap: 16 }}>
+        <section className="encounter-form-wizard-section">
           <EncounterMonsterEditor
             environment={values.environment}
             monsters={values.monsters}
             onChange={(monsters) => updateValue("monsters", monsters)}
           />
-          {fieldErrors.monsters ? <small style={{ color: "#b91c1c" }}>{fieldErrors.monsters}</small> : null}
+          {fieldErrors.monsters ? <small className="encounter-form-wizard-field-error">{fieldErrors.monsters}</small> : null}
         </section>
       ) : null}
 
       {step === 3 ? (
-        <section style={{ display: "grid", gap: 16 }}>
-          <div style={{ display: "grid", gap: 8, padding: 16, borderRadius: 12, background: "#f8fafc", border: "1px solid #cbd5e1" }}>
-            <h2 style={{ margin: 0 }}>Final review</h2>
-            <p style={{ margin: 0 }}><strong>Name:</strong> {values.title || "Untitled encounter"}</p>
-            <p style={{ margin: 0 }}><strong>Party:</strong> {values.partySize} characters at level {values.partyLevel}</p>
-            <p style={{ margin: 0 }}><strong>Environment:</strong> {values.environment}</p>
-            <p style={{ margin: 0 }}><strong>Difficulty:</strong> {values.difficulty}</p>
-            <p style={{ margin: 0 }}><strong>Target CR:</strong> {values.targetCR}</p>
-            <p style={{ margin: 0 }}><strong>Monsters:</strong> {values.monsters.length}</p>
+        <section className="encounter-form-wizard-section">
+          <div className="encounter-form-wizard-review-card">
+            <h2 className="encounter-form-wizard-review-heading">Final review</h2>
+            <p className="encounter-form-wizard-review-line"><strong>Name:</strong> {values.title || "Untitled encounter"}</p>
+            <p className="encounter-form-wizard-review-line"><strong>Party:</strong> {values.partySize} characters at level {values.partyLevel}</p>
+            <p className="encounter-form-wizard-review-line"><strong>Environment:</strong> {values.environment}</p>
+            <p className="encounter-form-wizard-review-line"><strong>Difficulty:</strong> {values.difficulty}</p>
+            <p className="encounter-form-wizard-review-line"><strong>Target CR:</strong> {values.targetCR}</p>
+            <p className="encounter-form-wizard-review-line"><strong>Monsters:</strong> {values.monsters.length}</p>
           </div>
 
-          <div style={{ display: "grid", gap: 10 }}>
-            <h3 style={{ margin: 0 }}>Save status</h3>
+          <div className="encounter-form-wizard-status-block">
+            <h3 className="encounter-form-wizard-status-heading">Save status</h3>
             <EncounterStatusControls
               value={values.status}
               monsterCount={values.monsters.length}
@@ -270,13 +271,13 @@ export function EncounterFormWizard({
         </section>
       ) : null}
 
-      <footer style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
-        <div style={{ display: "flex", gap: 12 }}>
+      <footer className="encounter-form-wizard-footer">
+        <div className="encounter-form-wizard-footer-actions">
           <button
             type="button"
             onClick={previousStep}
             disabled={step === 0 || isSubmitting}
-            style={{ padding: "10px 14px", borderRadius: 10, border: "1px solid #cbd5e1", background: "white" }}
+            className="encounter-form-wizard-button encounter-form-wizard-button-secondary"
           >
             Back
           </button>
@@ -285,20 +286,20 @@ export function EncounterFormWizard({
               type="button"
               onClick={onCancel}
               disabled={isSubmitting}
-              style={{ padding: "10px 14px", borderRadius: 10, border: "1px solid #cbd5e1", background: "white" }}
+              className="encounter-form-wizard-button encounter-form-wizard-button-secondary"
             >
               Cancel
             </button>
           ) : null}
         </div>
 
-        <div style={{ display: "flex", gap: 12 }}>
+        <div className="encounter-form-wizard-footer-actions">
           {step < 3 ? (
             <button
               type="button"
               onClick={nextStep}
               disabled={isSubmitting}
-              style={{ padding: "10px 14px", borderRadius: 10, border: "1px solid #0f766e", background: "#0f766e", color: "white" }}
+              className="encounter-form-wizard-button encounter-form-wizard-button-primary"
             >
               Next
             </button>
@@ -306,7 +307,7 @@ export function EncounterFormWizard({
             <button
               type="submit"
               disabled={isSubmitting}
-              style={{ padding: "10px 14px", borderRadius: 10, border: "1px solid #0f766e", background: "#0f766e", color: "white" }}
+              className="encounter-form-wizard-button encounter-form-wizard-button-primary"
             >
               {isSubmitting ? "Saving..." : submitLabel}
             </button>

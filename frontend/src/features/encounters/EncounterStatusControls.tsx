@@ -1,4 +1,5 @@
 import { encounterStatusValues, isReadyEncounterValid } from "./encounterValidation";
+import "./EncounterComponents.css";
 
 interface EncounterStatusControlsProps {
   value: "draft" | "ready";
@@ -32,12 +33,18 @@ export function EncounterStatusControls({
   });
 
   return (
-    <div style={{ display: "grid", gap: 12 }}>
-      <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+    <div className="encounter-status-controls">
+      <div className="encounter-status-controls-options">
         {encounterStatusValues.map((status) => {
           const isSelected = value === status;
           const isReady = status === "ready";
           const readyDisabled = isReady && !canBeReady;
+          const buttonClassName = [
+            "encounter-status-controls-button",
+            isSelected ? "encounter-status-controls-button-selected" : "",
+          ]
+            .filter(Boolean)
+            .join(" ");
 
           return (
             <button
@@ -45,14 +52,7 @@ export function EncounterStatusControls({
               type="button"
               onClick={() => onChange(status)}
               disabled={disabled || readyDisabled}
-              style={{
-                padding: "10px 14px",
-                borderRadius: 10,
-                border: isSelected ? "2px solid #0f766e" : "1px solid #cbd5e1",
-                background: isSelected ? "#ccfbf1" : "white",
-                opacity: disabled || readyDisabled ? 0.6 : 1,
-                cursor: disabled || readyDisabled ? "not-allowed" : "pointer",
-              }}
+              className={buttonClassName}
             >
               {status === "draft" ? "Draft" : "Ready"}
             </button>
@@ -61,7 +61,7 @@ export function EncounterStatusControls({
       </div>
 
       {value === "ready" && monsterCount === 0 ? (
-        <p style={{ color: "#b45309", margin: 0 }}>
+        <p className="encounter-status-controls-warning">
           Add at least one monster before marking an encounter ready.
         </p>
       ) : null}

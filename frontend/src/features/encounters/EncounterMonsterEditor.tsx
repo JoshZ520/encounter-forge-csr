@@ -3,6 +3,7 @@ import { createManualSnapshot, mergeMonsterSnapshotSelection, type EncounterMons
 import { MonsterPicker } from "./MonsterPicker";
 import { MonsterSnapshotCard } from "./MonsterSnapshotCard";
 import type { MonsterCatalogItem } from "./monsterCatalogApi";
+import "./EncounterComponents.css";
 
 interface EncounterMonsterEditorProps {
   environment: "Dungeon" | "Forest" | "Urban" | "Wilderness" | "Underdark" | "Other";
@@ -32,26 +33,26 @@ export function EncounterMonsterEditor({ environment, monsters, onChange }: Enco
   }
 
   return (
-    <section style={{ display: "grid", gap: 16 }}>
+    <section className="encounter-monster-editor">
       <MonsterPicker defaultEnvironment={environment} onSelect={handleSelectMonster} />
 
-      <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
+      <div className="encounter-monster-editor-header">
         <div>
           <strong>Current lineup</strong>
-          <p style={{ margin: "4px 0 0", color: "#475569", fontSize: 13 }}>
+          <p className="encounter-monster-editor-subtitle">
             {monsters.length} monsters total, {manualCount} manual entries.
           </p>
         </div>
         <button
           type="button"
           onClick={addManualMonster}
-          style={{ padding: "10px 14px", borderRadius: 10, border: "1px solid #0f766e", background: "#ecfeff" }}
+          className="encounter-monster-editor-add-button"
         >
           Add manual monster
         </button>
       </div>
 
-      <div style={{ display: "grid", gap: 12 }}>
+      <div className="encounter-monster-editor-list">
         {monsters.map((monster, index) => (
           <MonsterSnapshotCard
             key={`${monster.sourceMonsterId ?? monster.name}-${index}`}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { deleteEncounter, fetchEncounter, type EncounterDetail } from "../features/encounters/encounterApi";
 import { MonsterSnapshotCard } from "../features/encounters/MonsterSnapshotCard";
+import "./EncounterPages.css";
 
 interface FlashState {
   flashMessage?: string;
@@ -56,14 +57,14 @@ export function EncounterDetailPage() {
   }
 
   if (isLoading) {
-    return <main style={{ padding: 24 }}>Loading encounter...</main>;
+    return <main className="encounter-detail-loading">Loading encounter...</main>;
   }
 
   if (error) {
     return (
-      <main style={{ maxWidth: 900, margin: "0 auto", padding: 24, display: "grid", gap: 16 }}>
-        <div style={{ padding: 12, borderRadius: 10, background: "#fef2f2", color: "#b91c1c" }}>{error}</div>
-        <Link to="/encounters" style={{ color: "#0f766e" }}>Back to encounters</Link>
+      <main className="encounter-detail-error-page">
+        <div className="encounter-detail-alert-error">{error}</div>
+        <Link to="/encounters" className="encounter-detail-link">Back to encounters</Link>
       </main>
     );
   }
@@ -73,35 +74,35 @@ export function EncounterDetailPage() {
   }
 
   return (
-    <main style={{ maxWidth: 1000, margin: "0 auto", padding: 24, display: "grid", gap: 20 }}>
-      <header style={{ display: "flex", justifyContent: "space-between", gap: 16, alignItems: "start", flexWrap: "wrap" }}>
-        <div style={{ display: "grid", gap: 6 }}>
-          <h1 style={{ margin: 0 }}>{encounter.title}</h1>
-          <p style={{ margin: 0, color: "#475569" }}>
+    <main className="encounter-detail-page">
+      <header className="encounter-detail-header">
+        <div className="encounter-detail-title-group">
+          <h1 className="encounter-detail-title">{encounter.title}</h1>
+          <p className="encounter-detail-subtitle">
             {encounter.environment} · {encounter.difficulty} · CR {encounter.targetCR}
           </p>
         </div>
 
-        <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-          <Link to={`/encounters/${encounter.id}/edit`} style={{ color: "#0f766e" }}>Edit</Link>
-          <button type="button" onClick={handleDelete} style={{ border: 0, background: "transparent", color: "#b91c1c", padding: 0, cursor: "pointer" }}>Delete</button>
-          <Link to="/encounters" style={{ color: "#0f766e" }}>Back</Link>
+        <div className="encounter-detail-actions">
+          <Link to={`/encounters/${encounter.id}/edit`} className="encounter-detail-link">Edit</Link>
+          <button type="button" onClick={handleDelete} className="encounter-detail-delete-button">Delete</button>
+          <Link to="/encounters" className="encounter-detail-link">Back</Link>
         </div>
       </header>
 
       {message ? (
-        <div style={{ padding: 12, borderRadius: 10, background: "#ecfeff", color: "#155e75" }}>{message}</div>
+        <div className="encounter-detail-alert-success">{message}</div>
       ) : null}
 
-      <section style={{ display: "grid", gap: 12, padding: 18, borderRadius: 16, border: "1px solid #cbd5e1", background: "white" }}>
-        <p style={{ margin: 0 }}><strong>Owner:</strong> {encounter.ownerUserId}</p>
-        <p style={{ margin: 0 }}><strong>Party:</strong> {encounter.partySize} at level {encounter.partyLevel}</p>
-        <p style={{ margin: 0 }}><strong>Status:</strong> {encounter.status}</p>
-        <p style={{ margin: 0 }}><strong>Notes:</strong> {encounter.notes || "None"}</p>
+      <section className="encounter-detail-summary">
+        <p className="encounter-detail-summary-row"><strong>Owner:</strong> {encounter.ownerUserId}</p>
+        <p className="encounter-detail-summary-row"><strong>Party:</strong> {encounter.partySize} at level {encounter.partyLevel}</p>
+        <p className="encounter-detail-summary-row"><strong>Status:</strong> {encounter.status}</p>
+        <p className="encounter-detail-summary-row"><strong>Notes:</strong> {encounter.notes || "None"}</p>
       </section>
 
-      <section style={{ display: "grid", gap: 12 }}>
-        <h2 style={{ margin: 0 }}>Monster snapshots</h2>
+      <section className="encounter-detail-snapshots">
+        <h2 className="encounter-detail-snapshots-title">Monster snapshots</h2>
         {encounter.monsters.length === 0 ? <p>No monsters added yet.</p> : null}
         {encounter.monsters.map((monster, index) => (
           <MonsterSnapshotCard key={`${monster.name}-${index}`} monster={monster} index={index} />
