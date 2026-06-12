@@ -118,16 +118,16 @@
 
 **Purpose**: Verify quality gates across documentation, performance, and UX consistency.
 
-- [ ] T042 [P] Add quickstart execution verification notes in specs/001-encounter-crud-auth/quickstart.md
-- [ ] T043 [P] Add monster lookup performance regression test for p95 target in backend/tests/integration/monsters.performance.integration.test.ts
-- [ ] T044 Run guided-form UX consistency pass and finalize interaction copy in frontend/src/features/encounters/EncounterFormWizard.tsx
-- [ ] T045 Update OpenAPI examples and error-case details in specs/001-encounter-crud-auth/contracts/openapi.yaml
-- [ ] T046 Document implementation outcomes and constraints review in specs/001-encounter-crud-auth/plan.md
-- [ ] T047 Add timed workflow test for SC-001 and SC-002 thresholds in frontend/tests/integration/workflow.timing.integration.test.ts
-- [ ] T048 Add CRUD confirmation latency checks for SC-003 in frontend/tests/integration/crud.feedback.performance.test.ts
-- [ ] T049 Add usability acceptance runbook and pass-rate capture for SC-004 in specs/001-encounter-crud-auth/checklists/usability.md
-- [ ] T050 Add unauthorized ownership acceptance test report workflow for SC-005 in specs/001-encounter-crud-auth/checklists/security-acceptance.md
-- [ ] T051 Add explicit MVP scope guard checklist for FR-015 exclusions in specs/001-encounter-crud-auth/checklists/scope-guard.md
+- [x] T042 [P] Add quickstart execution verification notes in specs/001-encounter-crud-auth/quickstart.md
+- [x] T043 [P] Add monster lookup performance regression test for p95 target in backend/tests/integration/monsters.performance.integration.test.ts
+- [x] T044 Run guided-form UX consistency pass and finalize interaction copy in frontend/src/features/encounters/EncounterFormWizard.tsx
+- [x] T045 Update OpenAPI examples and error-case details in specs/001-encounter-crud-auth/contracts/openapi.yaml
+- [x] T046 Document implementation outcomes and constraints review in specs/001-encounter-crud-auth/plan.md
+- [x] T047 Add timed workflow test for SC-001 and SC-002 thresholds in frontend/tests/integration/workflow.timing.integration.test.ts
+- [x] T048 Add CRUD confirmation latency checks for SC-003 in frontend/tests/integration/crud.feedback.performance.test.ts
+- [x] T049 Add usability acceptance runbook and pass-rate capture for SC-004 in specs/001-encounter-crud-auth/checklists/usability.md
+- [x] T050 Add unauthorized ownership acceptance test report workflow for SC-005 in specs/001-encounter-crud-auth/checklists/security-acceptance.md
+- [x] T051 Add explicit MVP scope guard checklist for FR-015 exclusions in specs/001-encounter-crud-auth/checklists/scope-guard.md
 
 ---
 

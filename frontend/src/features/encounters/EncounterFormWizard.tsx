@@ -21,7 +21,7 @@ interface EncounterFormWizardProps {
 
 type WizardStep = 0 | 1 | 2 | 3;
 
-const stepLabels = ["Basics", "Party", "Monsters", "Review"] as const;
+const stepLabels = ["Basics", "Party", "Monster lineup", "Review"] as const;
 
 export function EncounterFormWizard({
   initialValues,
@@ -119,9 +119,12 @@ export function EncounterFormWizard({
   return (
     <form onSubmit={handleSubmit} style={{ display: "grid", gap: 20 }}>
       <header style={{ display: "grid", gap: 8 }}>
-        <h1 style={{ margin: 0 }}>Encounter Builder</h1>
+        <h1 style={{ margin: 0 }}>Encounter Forge</h1>
         <p style={{ margin: 0, color: "#475569" }}>
-          Step {step + 1} of 4: {stepLabels[step]}
+          Step {step + 1} of 4: {stepLabels[step]}.
+        </p>
+        <p style={{ margin: 0, color: "#64748b", fontSize: 14 }}>
+          Move through the sections in order. Draft encounters can stay empty until you are ready.
         </p>
       </header>
 
@@ -246,7 +249,7 @@ export function EncounterFormWizard({
       {step === 3 ? (
         <section style={{ display: "grid", gap: 16 }}>
           <div style={{ display: "grid", gap: 8, padding: 16, borderRadius: 12, background: "#f8fafc", border: "1px solid #cbd5e1" }}>
-            <h2 style={{ margin: 0 }}>Review</h2>
+            <h2 style={{ margin: 0 }}>Final review</h2>
             <p style={{ margin: 0 }}><strong>Name:</strong> {values.title || "Untitled encounter"}</p>
             <p style={{ margin: 0 }}><strong>Party:</strong> {values.partySize} characters at level {values.partyLevel}</p>
             <p style={{ margin: 0 }}><strong>Environment:</strong> {values.environment}</p>
@@ -256,7 +259,7 @@ export function EncounterFormWizard({
           </div>
 
           <div style={{ display: "grid", gap: 10 }}>
-            <h3 style={{ margin: 0 }}>Status</h3>
+            <h3 style={{ margin: 0 }}>Save status</h3>
             <EncounterStatusControls
               value={values.status}
               monsterCount={values.monsters.length}

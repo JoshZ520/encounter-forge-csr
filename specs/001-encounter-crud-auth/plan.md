@@ -93,3 +93,23 @@ frontend/
 - User Experience Consistency: PASS. Contracts and model enforce guided flow semantics (draft support, section-step validation semantics, collapsible detail payload).
 - Performance Budgets Are Mandatory: PASS. Paginated/typeahead catalog endpoint and list/detail split prevent oversized payloads and support SC-003 latency target.
 - Scope Discipline and Simplicity: PASS. No API integration for external monster services in MVP; manual monster entry and MongoDB catalog satisfy requirements.
+
+## Implementation Review
+
+- Auth, encounter CRUD, and monster lineup flows were implemented as separate, independently testable slices.
+- Phase 6 polish focused on documentation, regression checks, and contract examples rather than new product scope.
+- The current MVP still depends on the seeded MongoDB state for monster catalog usefulness; an empty catalog is acceptable but not ideal for demos.
+- Timing and performance checks act as regression guards, not hard guarantees under every CI or Atlas load condition.
+
+## Implementation Outcomes
+
+- Authentication, encounter CRUD, and monster catalog lookup are implemented as separate slices with owner isolation preserved end-to-end.
+- The monster catalog uses MongoDB-only lookup with query filtering, pagination, and show-all fallback rather than an external API dependency.
+- Encounter monster data is stored as immutable snapshots so saved encounters do not drift when catalog entries change later.
+- The guided encounter flow keeps validation at section transitions and uses the same field bounds described in the spec.
+
+## Constraints Review
+
+- The MVP remains CSR-first and API-driven through environment configuration.
+- Session expiry is enforced through inactivity tracking, so acceptance testing should always include a re-login path after idle time.
+- Performance checks should focus on user-visible timing and small paginated catalog queries; the app is not sized for unbounded monster lists.

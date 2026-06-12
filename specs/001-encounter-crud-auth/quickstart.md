@@ -79,3 +79,25 @@ Critical behavior:
 ## 7. Next Command
 
 After confirming these artifacts, run `/speckit.tasks` to generate implementation tasks from this plan.
+
+## 8. Verification Notes
+
+After implementation, verify the shipped slice with:
+
+- `npm test -- monsters.contract.test.ts monsters.snapshot.integration.test.ts`
+- `npm run build` in `backend/`
+- `npm run build` in `frontend/`
+
+Expected outcome:
+
+- Monster lookup returns a paginated response for authenticated users.
+- Encounter snapshots keep their saved monster fields even if the catalog changes later.
+- Guided encounter flow still validates step transitions before save.
+
+## 8. Verification Notes
+
+- Run `npm test` in `backend/` to verify auth, encounter, and monster regression coverage.
+- Run `npm run build` in `backend/` and `frontend/` to confirm the TypeScript build stays clean.
+- Open `/encounters` after logging in to confirm the protected list page loads and the auth guard redirects unauthenticated users.
+- Open `/encounters/new` to verify the guided flow, monster lineup editor, and save-status controls behave as expected.
+- Open an existing encounter detail page to confirm monster snapshots display as collapsed cards with reviewable details.
