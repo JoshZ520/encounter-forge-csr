@@ -4,7 +4,9 @@ import { useAuthStore } from "./stores/authStore";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
-import { Home } from "./pages/Home";
+import { EncounterListPage } from "./pages/EncounterListPage";
+import { EncounterDetailPage } from "./pages/EncounterDetailPage";
+import { EncounterEditorPage } from "./pages/EncounterEditorPage";
 
 export function App() {
   const token = useAuthStore((state) => state.token);
@@ -23,11 +25,36 @@ export function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Navigate to="/encounters" replace />} />
         <Route
-          path="/"
+          path="/encounters"
           element={
             <ProtectedRoute>
-              <Home />
+              <EncounterListPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/encounters/new"
+          element={
+            <ProtectedRoute>
+              <EncounterEditorPage mode="create" />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/encounters/:encounterId/edit"
+          element={
+            <ProtectedRoute>
+              <EncounterEditorPage mode="edit" />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/encounters/:encounterId"
+          element={
+            <ProtectedRoute>
+              <EncounterDetailPage />
             </ProtectedRoute>
           }
         />

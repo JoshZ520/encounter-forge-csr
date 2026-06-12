@@ -25,7 +25,7 @@ export function Login() {
       await login(email, password);
       setSuccess(true);
       setTimeout(() => {
-        navigate("/");
+          navigate("/encounters");
       }, 500);
     } catch (err) {
       // Error is already set in store

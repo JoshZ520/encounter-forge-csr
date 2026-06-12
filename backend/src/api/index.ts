@@ -1,7 +1,7 @@
 import { Router } from "express";
-import authRouter from "./auth/auth.routes";
-import encountersRouter from "./encounters/encounters.routes";
-import monstersRouter from "./monsters/monsters.routes";
+import authRouter from "./auth/auth.routes.js";
+import encountersRouter from "./encounters/encounters.routes.js";
+import monstersRouter from "./monsters/monsters.routes.js";
 
 const apiRouter = Router();
 

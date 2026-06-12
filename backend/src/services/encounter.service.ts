@@ -1,6 +1,6 @@
 import { Types } from "mongoose";
-import { ApiError } from "../middleware/errorHandler";
-import { EncounterModel, type EncounterDocument } from "../models/encounter.model";
+import { ApiError } from "../middleware/errorHandler.js";
+import { EncounterModel, type EncounterDocument } from "../models/encounter.model.js";
 
 interface EncounterMonsterInput {
   sourceMonsterId?: string;
@@ -137,7 +137,20 @@ export async function listEncounters(
       .select("title partySize partyLevel environment difficulty targetCR status updatedAt")
       .lean(),
     EncounterModel.countDocuments({ ownerUserId }),
-  ]);
+  ]) as [
+    Array<{
+      _id: Types.ObjectId;
+      title: string;
+      partySize: number;
+      partyLevel: number;
+      environment: string;
+      difficulty: string;
+      targetCR: string;
+      status: string;
+      updatedAt: Date;
+    }>,
+    number,
+  ];
 
   return {
     items: items.map((item) => ({

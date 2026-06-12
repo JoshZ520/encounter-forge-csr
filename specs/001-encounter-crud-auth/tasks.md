@@ -71,19 +71,19 @@
 
 ### Tests for User Story 2
 
-- [ ] T023 [P] [US2] Add encounter CRUD contract tests for /encounters endpoints in backend/tests/contract/encounters.contract.test.ts
-- [ ] T024 [P] [US2] Add encounter integration tests for ownership and CRUD lifecycle in backend/tests/integration/encounters.crud.integration.test.ts
+- [x] T023 [P] [US2] Add encounter CRUD contract tests for /encounters endpoints in backend/tests/contract/encounters.contract.test.ts
+- [x] T024 [P] [US2] Add encounter integration tests for ownership and CRUD lifecycle in backend/tests/integration/encounters.crud.integration.test.ts
 
 ### Implementation for User Story 2
 
-- [ ] T025 [P] [US2] Create encounter schema/model with status, difficulty, and targetCR fields in backend/src/models/encounter.model.ts
-- [ ] T026 [US2] Implement encounter CRUD service with owner scoping in backend/src/services/encounter.service.ts
-- [ ] T027 [US2] Implement encounter API routes for list/create/detail/update/delete in backend/src/api/encounters/encounters.routes.ts
-- [ ] T028 [US2] Implement guided single-page form sections and step-transition validation in frontend/src/features/encounters/EncounterFormWizard.tsx
-- [ ] T029 [P] [US2] Implement encounter list and detail pages in frontend/src/pages/EncounterListPage.tsx
-- [ ] T030 [US2] Implement frontend encounter API integration and success/failure confirmations in frontend/src/features/encounters/encounterApi.ts
-- [ ] T031 [US2] Implement frontend validation schema for required fields, bounds, and enums in frontend/src/features/encounters/encounterValidation.ts
-- [ ] T032 [US2] Implement draft/ready status controls and transition guards in frontend/src/features/encounters/EncounterStatusControls.tsx
+- [x] T025 [P] [US2] Create encounter schema/model with status, difficulty, and targetCR fields in backend/src/models/encounter.model.ts
+- [x] T026 [US2] Implement encounter CRUD service with owner scoping in backend/src/services/encounter.service.ts
+- [x] T027 [US2] Implement encounter API routes for list/create/detail/update/delete in backend/src/api/encounters/encounters.routes.ts
+- [x] T028 [US2] Implement guided single-page form sections and step-transition validation in frontend/src/features/encounters/EncounterFormWizard.tsx
+- [x] T029 [P] [US2] Implement encounter list and detail pages in frontend/src/pages/EncounterListPage.tsx
+- [x] T030 [US2] Implement frontend encounter API integration and success/failure confirmations in frontend/src/features/encounters/encounterApi.ts
+- [x] T031 [US2] Implement frontend validation schema for required fields, bounds, and enums in frontend/src/features/encounters/encounterValidation.ts
+- [x] T032 [US2] Implement draft/ready status controls and transition guards in frontend/src/features/encounters/EncounterStatusControls.tsx
 
 **Checkpoint**: User Stories 1 and 2 are independently functional.
 

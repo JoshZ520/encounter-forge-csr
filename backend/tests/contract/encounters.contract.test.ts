@@ -14,8 +14,8 @@ describe("Encounters contract", () => {
   it("defines expected encounter status codes", () => {
     const contractText = fs.readFileSync(openApiPath, "utf8");
 
-    expect(contractText).toContain('"201":');
     expect(contractText).toContain('"200":');
+    expect(contractText).toContain('"201":');
     expect(contractText).toContain('"204":');
     expect(contractText).toContain('"400":');
     expect(contractText).toContain('"401":');

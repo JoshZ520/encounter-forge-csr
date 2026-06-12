@@ -36,7 +36,7 @@ export function Register() {
       await register(email, password);
       setSuccess(true);
       setTimeout(() => {
-        navigate("/");
+          navigate("/encounters");
       }, 500);
     } catch (err) {
       // Error is already set in store

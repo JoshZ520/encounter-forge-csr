@@ -1,9 +1,9 @@
 import "dotenv/config";
 import cors from "cors";
 import express from "express";
-import apiRouter from "./api";
-import { connectToDatabase } from "./lib/mongoose";
-import { errorHandler, notFoundHandler } from "./middleware/errorHandler";
+import apiRouter from "./api/index.js";
+import { connectToDatabase } from "./lib/mongoose.js";
+import { errorHandler, notFoundHandler } from "./middleware/errorHandler.js";
 
 const app = express();
 

@@ -2,10 +2,10 @@ import "dotenv/config";
 import express from "express";
 import jwt from "jsonwebtoken";
 import request from "supertest";
-import { connectToDatabase, disconnectFromDatabase } from "../../src/lib/mongoose";
-import encountersRouter from "../../src/api/encounters/encounters.routes";
-import { errorHandler, notFoundHandler } from "../../src/middleware/errorHandler";
-import { EncounterModel } from "../../src/models/encounter.model";
+import { connectToDatabase, disconnectFromDatabase } from "../../src/lib/mongoose.js";
+import encountersRouter from "../../src/api/encounters/encounters.routes.js";
+import { errorHandler, notFoundHandler } from "../../src/middleware/errorHandler.js";
+import { EncounterModel } from "../../src/models/encounter.model.js";
 
 const hasMongoUri = Boolean(process.env.MONGODB_URI);
 

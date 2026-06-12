@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from "express";
 import { ZodError, type ZodTypeAny } from "zod";
-import { ApiError } from "../middleware/errorHandler";
+import { ApiError } from "../middleware/errorHandler.js";
 
 function mapZodError(error: ZodError) {
   return error.issues.map((issue) => ({

@@ -4,7 +4,7 @@ import {
   DIFFICULTY_VALUES,
   ENCOUNTER_STATUS_VALUES,
   ENVIRONMENT_VALUES,
-} from "./enums";
+} from "./enums.js";
 
 const encounterMonsterSnapshotSchema = new Schema(
   {
