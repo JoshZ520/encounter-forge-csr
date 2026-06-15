@@ -1,0 +1,421 @@
+.encounter-form-wizard {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.encounter-form-wizard-header {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.encounter-form-wizard-title {
+  margin: 0;
+}
+
+.encounter-form-wizard-subtitle {
+  margin: 0;
+  color: #475569;
+}
+
+.encounter-form-wizard-description {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.encounter-form-wizard-error-banner {
+  padding: 0.75rem;
+  border-radius: 0.625rem;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.encounter-form-wizard-section {
+  display: grid;
+  gap: 1rem;
+}
+
+.encounter-form-wizard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.encounter-form-wizard-field {
+  display: grid;
+  gap: 0.375rem;
+}
+
+.encounter-form-wizard-input {
+  padding: 0.625rem;
+  border-radius: 0.5rem;
+  border: 1px solid #cbd5e1;
+}
+
+.encounter-form-wizard-field-error {
+  color: #b91c1c;
+}
+
+.encounter-form-wizard-review-card {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+}
+
+.encounter-form-wizard-review-heading {
+  margin: 0;
+}
+
+.encounter-form-wizard-review-line {
+  margin: 0;
+}
+
+.encounter-form-wizard-status-block {
+  display: grid;
+  gap: 0.625rem;
+}
+
+.encounter-form-wizard-status-heading {
+  margin: 0;
+}
+
+.encounter-form-wizard-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.encounter-form-wizard-footer-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.encounter-form-wizard-button {
+  padding: 0.625rem 0.875rem;
+  border-radius: 0.625rem;
+  cursor: pointer;
+}
+
+.encounter-form-wizard-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.encounter-form-wizard-button-secondary {
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+}
+
+.encounter-form-wizard-button-primary {
+  border: 1px solid #0f766e;
+  background: #0f766e;
+  color: #ffffff;
+}
+
+.encounter-form-wizard-button-primary:hover:not(:disabled) {
+  background: #115e59;
+  border-color: #115e59;
+}
+
+.encounter-monster-editor {
+  display: grid;
+  gap: 1rem;
+}
+
+.encounter-monster-editor-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.encounter-monster-editor-subtitle {
+  margin: 0.25rem 0 0;
+  color: #475569;
+  font-size: 0.8125rem;
+}
+
+.encounter-monster-editor-add-button {
+  padding: 0.625rem 0.875rem;
+  border-radius: 0.625rem;
+  border: 1px solid #0f766e;
+  background: #ecfeff;
+  color: #134e4a;
+  cursor: pointer;
+}
+
+.encounter-monster-editor-add-button:hover {
+  background: #cffafe;
+}
+
+.encounter-monster-editor-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.monster-picker {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 0.875rem;
+  border: 1px solid #cbd5e1;
+  background: #fff7ed;
+}
+
+.monster-picker-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.monster-picker-subtitle {
+  margin: 0.25rem 0 0;
+  color: #7c2d12;
+  font-size: 0.8125rem;
+}
+
+.monster-picker-toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.monster-picker-filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+.monster-picker-field {
+  display: grid;
+  gap: 0.375rem;
+}
+
+.monster-picker-search-field {
+  grid-column: span 2;
+}
+
+.monster-picker-input {
+  padding: 0.625rem;
+  border-radius: 0.5rem;
+  border: 1px solid #fdba74;
+}
+
+.monster-picker-error {
+  padding: 0.75rem;
+  border-radius: 0.625rem;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.monster-picker-list {
+  display: grid;
+  gap: 0.625rem;
+}
+
+.monster-picker-message {
+  margin: 0;
+}
+
+.monster-picker-item {
+  text-align: left;
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid #fdba74;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.monster-picker-item:hover {
+  background: #ffedd5;
+}
+
+.monster-picker-item-meta {
+  color: #7c2d12;
+  font-size: 0.8125rem;
+}
+
+.monster-picker-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.monster-picker-footer-meta {
+  color: #7c2d12;
+  font-size: 0.8125rem;
+}
+
+.monster-picker-footer-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.monster-picker-page-button {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.625rem;
+  border: 1px solid #fdba74;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.monster-picker-page-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.monster-snapshot-card {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 0.875rem;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+}
+
+.monster-snapshot-card-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.monster-snapshot-card-header-copy {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.monster-snapshot-card-subtitle {
+  color: #475569;
+  font-size: 0.8125rem;
+}
+
+.monster-snapshot-card-expand-label {
+  color: #475569;
+  font-size: 0.75rem;
+}
+
+.monster-snapshot-card-content {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.monster-snapshot-card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.monster-snapshot-card-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  background: #e2e8f0;
+  font-size: 0.75rem;
+}
+
+.monster-snapshot-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+.monster-snapshot-card-field {
+  display: grid;
+  gap: 0.375rem;
+}
+
+.monster-snapshot-card-input {
+  padding: 0.625rem;
+  border-radius: 0.5rem;
+  border: 1px solid #cbd5e1;
+}
+
+.monster-snapshot-card-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.monster-snapshot-card-ability-scores {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.monster-snapshot-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.monster-snapshot-card-remove-button {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.625rem;
+  border: 1px solid #ef4444;
+  background: #fff1f2;
+  color: #b91c1c;
+  cursor: pointer;
+}
+
+.monster-snapshot-card-remove-button:hover {
+  background: #ffe4e6;
+}
+
+.encounter-status-controls {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.encounter-status-controls-options {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.encounter-status-controls-button {
+  padding: 0.625rem 0.875rem;
+  border-radius: 0.625rem;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.encounter-status-controls-button-selected {
+  border: 2px solid #0f766e;
+  background: #ccfbf1;
+}
+
+.encounter-status-controls-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.encounter-status-controls-warning {
+  color: #b45309;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .monster-picker-search-field {
+    grid-column: auto;
+  }
+}
