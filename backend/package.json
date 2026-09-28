@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "tsx watch src/app.ts",
     "build": "tsc -p tsconfig.json",
-    "start": "node dist/app.js",
+    "start": "node dist/src/app.js",
     "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --config jest.config.cjs",
     "lint": "eslint .",
     "format": "prettier --write ."
